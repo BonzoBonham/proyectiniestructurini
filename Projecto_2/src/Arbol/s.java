@@ -56,7 +56,11 @@ public class s extends JFrame {
 		tree.setBounds(12, 55, 368, 428);
 		contentPane.add(tree);
 		
-		JButton btnAgregarFamiliar = new JButton("Agregar Familiar");
+		JButton btnAgregarFamiliar = new JButton("Agregar Hijo");
+		btnAgregarFamiliar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnAgregarFamiliar.setBounds(407, 51, 139, 25);
 		contentPane.add(btnAgregarFamiliar);
 		
