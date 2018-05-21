@@ -4,11 +4,16 @@ package Arbol;
 public class Persona implements Comparable<Persona> {
 	private String Nombre;
 	private int Edad;
+	private boolean isVivo;
+	private String fechanacimiento;
+	private String fechamuerte;
 	
-	public Persona(String n,int e) {
+	
+	public Persona(String n,int e, boolean isVivo) {
 		super();
 		Nombre=n;
 		Edad=e;
+		this.isVivo = isVivo;
 	}
 	
 	

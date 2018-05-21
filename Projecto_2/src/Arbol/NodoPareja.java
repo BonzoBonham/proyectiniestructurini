@@ -1,9 +1,13 @@
 package Arbol;
 
-public class NodoPareja <E extends Comparable<E>> {
-private Nodo hijo;
+import java.util.ArrayList;
+
+public class NodoPareja <E extends Comparable<E>> extends Nodo{
+
+private String E;
+private ArrayList<E> hijos;
 private Nodo hombre;
-private Nodo mujer;
+
 public Nodo getHijo() {
 	return hijo;
 }

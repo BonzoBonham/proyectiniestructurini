@@ -1,19 +1,23 @@
 package Arbol;
 
-public class Nodo <E extends Comparable<E>>{
+import java.util.ArrayList;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+
+public class Nodo <E extends Comparable<E>> extends DefaultMutableTreeNode{
 private E persona;
-private Nodo hermanos;
 private NodoPareja papas;
 private NodoPareja esposa;
 
 
-public Nodo(E persona, Nodo hermanos, NodoPareja papas, NodoPareja esposa) {
+public Nodo(E persona, NodoPareja papas, NodoPareja esposa) {
 	super();
 	this.persona = persona;
-	this.hermanos = hermanos;
 	this.papas = papas;
 	this.esposa = esposa;
+	hermanos = new ArrayList<E>();
 }
+
 public Nodo(E persona) {
 	super();
 	this.persona = persona;
@@ -33,12 +37,12 @@ public void setPersona(E persona) {
 }
 
 
-public Nodo getHermanos() {
+public ArrayList<E> getHermanos() {
 	return hermanos;
 }
 
 
-public void setHermanos(Nodo hermanos) {
+public void setHermanos(ArrayList<E> hermanos) {
 	this.hermanos = hermanos;
 }
 
@@ -62,9 +66,13 @@ public void setEsposa(NodoPareja esposa) {
 	this.esposa = esposa;
 }
 
+public void addHermano(Persona agregar) {
+	
+}
 
 
-public String toStringCompleto() {
+
+/*public String toStringCompleto() {
 	String herma="[";
 	Nodo nodo=this.getHermanos();
 	while(nodo!=null) {
@@ -73,7 +81,7 @@ public String toStringCompleto() {
 	}
 	herma=herma+"]";
 	return "Persona=\n\t" + ((Persona)persona).getNombre() + "\nHermanos=\n\t" + herma + "\nPadres=\n\t"+ papas+ "\nPareja=\n\t" + esposa;
-} 
+} */
 
 @Override
 public String toString() {
