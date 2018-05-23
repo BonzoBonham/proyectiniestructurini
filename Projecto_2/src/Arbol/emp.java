@@ -50,6 +50,7 @@ public class emp extends JFrame {
 	 * Create the frame.
 	 */
 	public emp() {
+		lock lock2 = new lock();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 445, 412);
 		contentPane = new JPanel();
@@ -95,9 +96,8 @@ public class emp extends JFrame {
 				info[0]=textField.getText(); //put jTextField1's value in the array.
 				info[1]=textField_1.getText(); //put jTextField1's value in the array.
 				info[2]=textField_2.getText(); //put jTextField1's value in the array.
-				synchronized (this) {
-					this.notify();
-						
+				synchronized (lock2) {
+					lock2.notify();	
 				}
 				setVisible(false); // hiding this form
 			}

@@ -22,6 +22,7 @@ public class s extends JFrame {
 	
 	public static String texto;
 	private JPanel contentPane;
+	public static int cont = 0;
 
 	/**
 	 * Launch the application.
@@ -43,6 +44,7 @@ public class s extends JFrame {
 	 * Create the frame.
 	 */
 	public s() throws InterruptedException{
+		lock lock = new lock();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 602, 543);
 		contentPane = new JPanel();
@@ -63,32 +65,40 @@ public class s extends JFrame {
 		JButton btnAgregarFamiliar = new JButton("Agregar Hijo");
 		btnAgregarFamiliar.addActionListener(new ActionListener() {
 			public void  actionPerformed(ActionEvent arg0) {
+
 				emp upale = new emp();
-				upale.setVisible(true);
-				synchronized (upale) {
-					try {
-						upale.wait();
-					} catch  (InterruptedException e1) {
-						
-					}
-						
-				}
-				
+				upale.setVisible(true);	
 			    TreePath path = tree.getSelectionPath();
-			    
+			    if (cont !=0) {
 			    DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
 			    tree.setSelectionRow(2);
 			    DefaultMutableTreeNode node =  (DefaultMutableTreeNode) path.getLastPathComponent();
 			    DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(upale.getPersona());
 			    DefaultMutableTreeNode dank = new DefaultMutableTreeNode("daml");
 			    model.insertNodeInto(newNode, node, node.getChildCount());
+				}
+			    cont++;
+				
 			}
 		});
 		
 		btnAgregarFamiliar.setBounds(407, 51, 139, 25);
 		contentPane.add(btnAgregarFamiliar);
 		
-		JButton btnCambiarCentro = new JButton("Cambiar Centro");
+		JButton btnCambiarCentro = new JButton("Eliminar Nodo");
+		btnCambiarCentro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+                DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+
+                TreePath[] paths = tree.getSelectionPaths();
+                for (TreePath path : paths) {
+                    DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
+                    if (node.getParent() != null) {
+                        model.removeNodeFromParent(node);
+                    }
+                }
+            }
+		});
 		btnCambiarCentro.setBounds(407, 89, 139, 25);
 		contentPane.add(btnCambiarCentro);
 		
@@ -157,4 +167,12 @@ public class s extends JFrame {
 	    category.add(book);
 	    */
 	}
+}
+
+class lock {
+	
+	private boolean dank;
+	public lock() {
+		this.dank = true;
+	} 
 }
