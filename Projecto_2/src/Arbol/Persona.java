@@ -46,11 +46,11 @@ public class Persona implements Comparable<Persona> {
 	@Override
 	public int compareTo(Persona o) {
 		// TODO Auto-generated method stub
-		if (Nombre.compareTo(o.getNombre())==0) {
+		
 			return Edad-o.getEdad();
-		}else {
-		return Nombre.compareTo(o.getNombre());
+
+
 		}
-	}
+	
 
 }
