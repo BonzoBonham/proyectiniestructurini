@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.Stack;
 
 import javax.swing.plaf.synth.SynthSplitPaneUI;
 
@@ -102,19 +103,62 @@ public LinkedList<Nodo> getPrimos(Nodo yo) {
 			else {
 				Iterator p=((NodoPareja)((NodoIndividual)f).getSigni()).getHijos().iterator();
 				while(p.hasNext()) {
-					list.add((Nodo) p.next());
-					
-				}
-				
+					list.add((Nodo) p.next());	
+				}		
 			}
 		}
-		
 		}
-	
-		
-	
 	return list;
+}
+public void OrganizarMenorAMayor(LinkedList<Nodo> list){
+	for(int i=0;i<list.size()-1;i++) {
+		for(int j=0;j<list.size()-1-i;j++) {
+			if(list.get(j+1).getInfo().compareTo(list.get(j).getInfo())<0) {
+				Comparable temp=list.get(j).getInfo();
+				list.get(j).setInfo(list.get(j+1).getInfo());
+				list.get(j+1).setInfo(temp);
+			}
+		}
+	}
+}
+public void OrganizarMenorAMayor(ArrayList<Nodo> list){
+	for(int i=0;i<list.size()-1;i++) {
+		for(int j=0;j<list.size()-1-i;j++) {
+			if(list.get(j+1).getInfo().compareTo(list.get(j).getInfo())<0) {
+				Comparable temp=list.get(j).getInfo();
+				list.get(j).setInfo(list.get(j+1).getInfo());
+				list.get(j+1).setInfo(temp);
+			}
+		}
+	}
+}
+
+public Stack<Nodo> InvertirOrden(ArrayList<Nodo> list) {
+	Stack<Nodo> pila=new Stack<Nodo>();
+	Iterator r=list.iterator();
+	while(r.hasNext()) {
+		pila.push((Nodo) r.next());
+	}
+	return pila;
 	
+}
+
+public Stack<Nodo> InvertirOrden(LinkedList<Nodo> list) {
+	Stack<Nodo> pila=new Stack<Nodo>();
+	Iterator r=list.iterator();
+	while(r.hasNext()) {
+		pila.push((Nodo) r.next());
+	}
+	return pila;
+	
+}
+
+public void ImprimirPila(Stack<Nodo> s) {
+	int r=s.size();
+	
+	for(int i=0;i<r;i++) {
+		System.out.print(s.pop()+", ");
+		}
 }
 
 /*

@@ -1,5 +1,8 @@
 package Arbol;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -56,8 +59,9 @@ a.AgregarHijoAPareja(np2, n6);
 a.AgregarHijoAPareja(np2, n7);
 //Agregar Hijos de mis Papas
 a.AgregarHijoAPareja(np1, n1);
-a.AgregarHijoAPareja(np1, n2);
 a.AgregarHijoAPareja(np1, n3);
+a.AgregarHijoAPareja(np1, n2);
+
 //Agregar Hijos de mis tios
 a.AgregarHijoAPareja(np3, n10);
 a.AgregarHijoAPareja(np3, n11);
@@ -74,7 +78,7 @@ System.out.println(((NodoIndividual)n4).getPapas());
 System.out.println(((NodoPareja)np2).getHijos());
 
 System.out.println(a.buscarNodo(n4));
-*/
+*//*
 System.out.println(n1);
 System.out.println();
 System.out.println("Casar");
@@ -92,7 +96,17 @@ System.out.println("Los hermanos son "+ a.getHermanos(n1));
 System.out.println();
 System.out.println("Los tios son "+ a.getTios(n1));
 System.out.println();
-System.out.println("Los primos son "+ a.getPrimos(n1));
+System.out.println("Los primos son "+ a.getPrimos(n1));*/
+LinkedList <Nodo> pri=a.getPrimos(n1);
+ArrayList<Nodo> pra=((NodoPareja)a.getAbuelosPaternos(n1)).getHijos();
+System.out.println();
+a.OrganizarMenorAMayor(pri);
+System.out.println("Los primos en orden son "+ pri);
+System.out.println();
+a.OrganizarMenorAMayor(pra);
+System.out.println("Los hijos de mis abuelos en orden son "+ pra);
+System.out.print("Los hijos de mis abuelos en orden contrario son ");
+a.ImprimirPila(a.InvertirOrden(pra));
 
 }
 
