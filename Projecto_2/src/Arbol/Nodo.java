@@ -25,6 +25,7 @@ public class Nodo <E extends Comparable<E>> extends DefaultMutableTreeNode{
 	}
 	//-------------------//-----------------------------//-----------------
 
+	
 
 	/*public String toStringCompleto() {
 	String herma="[";
