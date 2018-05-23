@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -16,7 +19,8 @@ import javax.swing.JTree;
 import javax.swing.JComboBox;
 
 public class s extends JFrame {
-
+	
+	public static String texto;
 	private JPanel contentPane;
 
 	/**
@@ -38,7 +42,7 @@ public class s extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public s() {
+	public s() throws InterruptedException{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 602, 543);
 		contentPane = new JPanel();
@@ -58,9 +62,29 @@ public class s extends JFrame {
 		
 		JButton btnAgregarFamiliar = new JButton("Agregar Hijo");
 		btnAgregarFamiliar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void  actionPerformed(ActionEvent arg0) {
+				emp upale = new emp();
+				upale.setVisible(true);
+				synchronized (upale) {
+					try {
+						upale.wait();
+					} catch  (InterruptedException e1) {
+						
+					}
+						
+				}
+				
+			    TreePath path = tree.getSelectionPath();
+			    
+			    DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+			    tree.setSelectionRow(2);
+			    DefaultMutableTreeNode node =  (DefaultMutableTreeNode) path.getLastPathComponent();
+			    DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(upale.getPersona());
+			    DefaultMutableTreeNode dank = new DefaultMutableTreeNode("daml");
+			    model.insertNodeInto(newNode, node, node.getChildCount());
 			}
 		});
+		
 		btnAgregarFamiliar.setBounds(407, 51, 139, 25);
 		contentPane.add(btnAgregarFamiliar);
 		

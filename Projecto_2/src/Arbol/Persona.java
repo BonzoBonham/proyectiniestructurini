@@ -9,11 +9,12 @@ public class Persona implements Comparable<Persona> {
 	private String fechamuerte;
 	
 	
-	public Persona(String n,int e, boolean isVivo) {
+	public Persona(String n,int e, String fechanacimiento ) {
 		super();
 		Nombre=n;
 		Edad=e;
-		this.isVivo = isVivo;
+		this.isVivo = true;
+		fechanacimiento = fechanacimiento;
 	}
 	
 	
