@@ -1,5 +1,6 @@
 package Arbol;
 
+
 public class Arbol<E> {
 private Nodo raiz;
 
@@ -26,6 +27,34 @@ public NodoPareja Casar(Nodo n1, Persona n2) {
 	((NodoIndividual) n1).setSigni(np);
 	return np;
 }
+
+public Nodo buscarNodo(Nodo busc){
+	return buscarNodo(busc, raiz);
+}
+
+
+//Metodo que busca la pareja que es padre de un nodoindividual
+public Nodo buscarNodo(Nodo busc, Nodo padre) {
+	if(padre instanceof NodoPareja){
+		NodoPareja pareja = ((NodoPareja)padre);
+		if(pareja.getHijos() != null && pareja.getHijos().contains(busc)){
+			return (Nodo)pareja;
+		}
+		Nodo temp = null;
+		int j = 0;
+		while (pareja.getHijos() != null && j<pareja.getHijos().size()) {
+			temp = buscarNodo(busc, (Nodo)pareja.getHijos().get(j++));		
+			if(temp != null)
+				return (Nodo)temp;
+		}
+		return null;
+	} else {
+		NodoIndividual pareja = ((NodoIndividual)padre);
+		Nodo ret = buscarNodo(busc, pareja.getSigni());
+		return ret;
+	}
+}
+
 /*
 public void AgregarHijoAPareja(NodoPareja nodo, Nodo n) {
 	if(nodo.getHijo()==null) {nodo.setHijo(n);n.setPapas(nodo);

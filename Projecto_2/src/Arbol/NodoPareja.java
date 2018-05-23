@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class NodoPareja <E extends Comparable<E>> extends Nodo{
 
 	//Atributos 
-	private ArrayList<E> hijos;
+	private ArrayList<Persona> hijos;
 	private NodoIndividual anterior;
 
 	//Getters y setters
-	public ArrayList<E> getHijos() {
+	public ArrayList<Persona> getHijos() {
 		return hijos;
 	}
-	public void setHijos(ArrayList<E> hijos) {
+	public void setHijos(ArrayList<Persona> hijos) {
 		this.hijos = hijos;
 	}
 	public Nodo getAnterior() {
@@ -28,13 +28,16 @@ public class NodoPareja <E extends Comparable<E>> extends Nodo{
 		this.hijos = new ArrayList<>();
 	}
 	
+	//Metodo para agregar un hijo, se le pasa una persona
+	public void AgregarHijo(Persona per) {
+		this.hijos.add(per);
+	}
 	
-
 	@Override
 	public String toString() {
-
 		return this.getInfo().toString();
 	}
+	
 	/*public String toStringCompleto() {
 		String herma;
 		if(this.getHijo()==null) {herma=" ";}
@@ -53,4 +56,6 @@ public class NodoPareja <E extends Comparable<E>> extends Nodo{
 		return "Hombre=\n\t" + (Persona)hombre.getPersona() + "\nMujer=\n\t" + (Persona)mujer.getPersona() + "\nHijos=\n\t"+herma;
 
 	}*/
+	
+	
 }
