@@ -260,6 +260,11 @@ public s(){
 	contentPane.add(btnCambiarCentro);
 	
 	JComboBox comboBox = new JComboBox();
+	JOptionPane n=new JOptionPane();
+	comboBox.addItem("Hermanos");
+	comboBox.addItem("Primos");
+	comboBox.addItem("Tios");
+	comboBox.addItem("Abuelos");
 	comboBox.setBounds(407, 297, 139, 22);
 	contentPane.add(comboBox);
 	
