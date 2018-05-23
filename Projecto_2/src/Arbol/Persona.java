@@ -8,6 +8,12 @@ public class Persona implements Comparable<Persona> {
 	private String fechanacimiento;
 	private String fechamuerte;
 	
+	public Persona(String n,int e, boolean isVivo ) {
+		super();
+		Nombre=n;
+		Edad=e;
+		this.isVivo = isVivo;
+	}
 	
 	public Persona(String n,int e, String fechanacimiento ) {
 		super();
