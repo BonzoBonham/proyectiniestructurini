@@ -27,6 +27,7 @@ public class Persona implements Comparable<Persona> {
 
 	public Persona(String n,int e, String fechanacimiento ) {
 		super();
+		fechamuerte = null;
 		fechanacimiento = fechanacimiento;
 		Nombre=n;
 		Edad=e;
@@ -36,6 +37,14 @@ public class Persona implements Comparable<Persona> {
 	}
 	
 	
+
+	public String getFechamuerte() {
+		return fechamuerte;
+	}
+
+	public void setFechamuerte(String fechamuerte) {
+		this.fechamuerte = fechamuerte;
+	}
 
 	public String getConyugue() {
 		return conyugue;
