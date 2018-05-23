@@ -94,23 +94,6 @@ System.out.println("Los tios son "+ a.getTios(n1));
 System.out.println();
 System.out.println("Los primos son "+ a.getPrimos(n1));
 
-/*
-a.AgregarHermano(n1, n2); // mi hermano
-a.AgregarHermano(n1, n3); //mi hermano
-a.AgregarPapas(n1,np1); //mis papas
-a.AgregarHermano(n4, n6);//mi tio 
-a.AgregarHermano(n4, n7); // mi tio
-a.AgregarPapas(n4, np2); // mis abuelos
-a.AgregarHijoAPareja(np3, n10); // hijos de mi tio (primos)
-a.AgregarHermano(n10, n11);
-a.AgregarHermano(n5,n16); // hermano de mi mama
-a.AgregarHijoAPareja(np5, n5);
-a.AgregarHijoAPareja(np6, n17);
-a.AgregarHermano(n17, n18);
-//System.out.println(n1.toStringCompleto());
-a.getAbuelos(n1);
-//a.getPrimos(n1);
-	*/
 }
 
 }
