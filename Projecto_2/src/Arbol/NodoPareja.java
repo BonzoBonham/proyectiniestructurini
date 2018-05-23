@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class NodoPareja <E extends Comparable<E>> extends Nodo{
 
 	//Atributos 
-	private ArrayList<Persona> hijos;
+	private ArrayList<Nodo> hijos;
 	private NodoIndividual anterior;
 
 	//Getters y setters
-	public ArrayList<Persona> getHijos() {
+	public ArrayList<Nodo> getHijos() {
 		return hijos;
 	}
-	public void setHijos(ArrayList<Persona> hijos) {
+	public void setHijos(ArrayList<Nodo> hijos) {
 		this.hijos = hijos;
 	}
 	public Nodo getAnterior() {
@@ -29,8 +29,9 @@ public class NodoPareja <E extends Comparable<E>> extends Nodo{
 	}
 	
 	//Metodo para agregar un hijo, se le pasa una persona
-	public void AgregarHijo(Persona per) {
+	public void AgregarHijo(Nodo per) {
 		this.hijos.add(per);
+		((NodoIndividual) per).setPapas(this);
 	}
 	
 	@Override

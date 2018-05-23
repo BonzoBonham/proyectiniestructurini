@@ -1,5 +1,11 @@
 package Arbol;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.ListIterator;
+
+import javax.swing.plaf.synth.SynthSplitPaneUI;
 
 public class Arbol<E> {
 private Nodo raiz;
@@ -22,9 +28,11 @@ public Arbol() {
 	this.raiz = null;
 }
 
-public NodoPareja Casar(Nodo n1, Persona n2) {
-	NodoPareja np=new NodoPareja(((Persona)(n1.getInfo())).getNombre()+" y "+n2.getNombre());
-	((NodoIndividual) n1).setSigni(np);
+public Nodo Casar(Nodo n1, Persona n2) {
+	Nodo np=new NodoPareja(((Persona)(n1.getInfo())).getNombre()+" y "+n2.getNombre());
+	((NodoIndividual) n1).setSigni((NodoPareja)np);
+	((NodoPareja) np).setHombre((NodoIndividual) n1);
+	
 	return np;
 }
 
@@ -53,6 +61,60 @@ public Nodo buscarNodo(Nodo busc, Nodo padre) {
 		Nodo ret = buscarNodo(busc, pareja.getSigni());
 		return ret;
 	}
+}
+
+public LinkedList<Nodo> getHermanos(Nodo yo) {
+	LinkedList <Nodo> list=new LinkedList<Nodo>();
+	Nodo papas=buscarNodo(yo);
+	
+	Iterator<Nodo> r=((NodoPareja)papas).getHijos().iterator();
+	while(r.hasNext()) {
+		Nodo her=r.next();
+		if(her!=yo) {
+			list.add(her);
+		}
+	}
+	return list;
+	}
+
+public void AgregarHijoAPareja(Nodo n, Nodo n2) {
+	((NodoPareja)n).AgregarHijo(n2);
+}
+
+public Nodo getAbuelosPaternos(Nodo yo) {
+return ((NodoIndividual)((NodoPareja)buscarNodo(yo)).getAnterior()).getPapas();
+}
+
+public LinkedList<Nodo> getTios(Nodo yo) {
+	LinkedList <Nodo> list=new LinkedList<Nodo>();
+	Nodo papa=((NodoPareja)buscarNodo(yo)).getAnterior();
+	return getHermanos(papa);
+	
+}
+public LinkedList<Nodo> getPrimos(Nodo yo) {
+	LinkedList <Nodo> list=new LinkedList<Nodo>();
+	LinkedList <Nodo> tios=getTios(yo);
+	Iterator t=tios.iterator();
+	while(t.hasNext()) {
+		Nodo f=(Nodo) t.next();
+		if(((NodoIndividual)f).getSigni()!=null) {
+			if(((NodoPareja)((NodoIndividual)f).getSigni()).getHijos().isEmpty()) {}
+			else {
+				Iterator p=((NodoPareja)((NodoIndividual)f).getSigni()).getHijos().iterator();
+				while(p.hasNext()) {
+					list.add((Nodo) p.next());
+					
+				}
+				
+			}
+		}
+		
+		}
+	
+		
+	
+	return list;
+	
 }
 
 /*
