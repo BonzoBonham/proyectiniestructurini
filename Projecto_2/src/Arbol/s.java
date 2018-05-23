@@ -273,11 +273,11 @@ public s(){
 	contentPane.add(lblMostrarPorRelacion);
 	
 	JLabel lblOrganizarPor = new JLabel("Organizar por....");
-	lblOrganizarPor.setBounds(407, 332, 129, 16);
+	lblOrganizarPor.setBounds(407, 400, 129, 16);
 	contentPane.add(lblOrganizarPor);
 	
 	JComboBox comboBox_1 = new JComboBox();
-	comboBox_1.setBounds(407, 361, 139, 22);
+	comboBox_1.setBounds(407, 429, 139, 22);
 	contentPane.add(comboBox_1);
 	
 	JButton btnAgregarConyugue = new JButton("Agregar Conyugue");
@@ -301,6 +301,19 @@ public s(){
 	});
 	btnAgregarConyugue.setBounds(407, 127, 139, 25);
 	contentPane.add(btnAgregarConyugue);
+	
+	JButton btnAceptar = new JButton("Aceptar");
+	btnAceptar.setBounds(407, 332, 97, 25);
+	contentPane.add(btnAceptar);
+	
+	JButton btnNewButton = new JButton("Mostrar Informacion");
+	btnNewButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	});
+	btnNewButton.setBounds(407, 165, 139, 25);
+	contentPane.add(btnNewButton);
 	
 
 	
