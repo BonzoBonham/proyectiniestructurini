@@ -48,9 +48,13 @@ public class Persona implements Comparable<Persona> {
 		// TODO Auto-generated method stub
 		
 			return Edad-o.getEdad();
-
-
+	}
+	public String toStringCompleto() {
+		return "Persona [Nombre=" + Nombre + ", Edad=" + Edad + ", isVivo=" + isVivo + ", fechanacimiento="
+				+ fechanacimiento + ", fechamuerte=" + fechamuerte + "]";
+			}
 		}
 	
+	
+	
 
-}
