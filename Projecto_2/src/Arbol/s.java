@@ -301,6 +301,15 @@ public s(){
 	btnAceptar.setBounds(407, 332, 97, 25);
 	contentPane.add(btnAceptar);
 	
+	JButton btnNewButton = new JButton("Mostrar Informacion");
+	btnNewButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	});
+	btnNewButton.setBounds(407, 165, 139, 25);
+	contentPane.add(btnNewButton);
+	
 
 	
 }
