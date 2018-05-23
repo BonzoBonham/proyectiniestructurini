@@ -245,7 +245,14 @@ public void getAbuelos(Nodo n) {
 }
 
 */
-
+public String toStringLista(LinkedList<Nodo> dank) {
+    Nodo head = dank.getFirst();
+	String result = head.toString() + " ";
+   	while(head.getNextNode() != null) {
+        result += head.getNextNode().toString();
+    }
+    return result;
+}
 
 }
 

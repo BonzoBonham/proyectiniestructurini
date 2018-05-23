@@ -7,23 +7,51 @@ public class Persona implements Comparable<Persona> {
 	private boolean isVivo;
 	private String fechanacimiento;
 	private String fechamuerte;
+	private String conyugue;
 	
 	public Persona(String n,int e, boolean isVivo ) {
 		super();
 		Nombre=n;
 		Edad=e;
 		this.isVivo = isVivo;
+		conyugue = null;
 	}
 	
+	public boolean isVivo() {
+		return isVivo;
+	}
+
+	public void setVivo(boolean isVivo) {
+		this.isVivo = isVivo;
+	}
+
 	public Persona(String n,int e, String fechanacimiento ) {
 		super();
+		fechanacimiento = fechanacimiento;
 		Nombre=n;
 		Edad=e;
 		this.isVivo = true;
-		fechanacimiento = fechanacimiento;
+		
+		conyugue = null;
 	}
 	
 	
+
+	public String getConyugue() {
+		return conyugue;
+	}
+
+	public void setConyugue(String conyugue) {
+		this.conyugue = conyugue;
+	}
+
+	public String getFechanacimiento() {
+		return fechanacimiento;
+	}
+
+	public void setFechanacimiento(String fechanacimiento) {
+		this.fechanacimiento = fechanacimiento;
+	}
 
 	public String getNombre() {
 		return Nombre;

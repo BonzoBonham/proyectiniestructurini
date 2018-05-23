@@ -67,9 +67,11 @@ public class mainer extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Persona dankus  = new Persona(textField.getText(), Integer.parseInt(textField_1.getText()), textField_2.getText());
 				Nodo dankuss = new NodoIndividual(dankus);
-				s dank = new s(dankuss);
+				Arbol ultimate = new Arbol(dankuss);
+				s dank = new s(dankuss, ultimate);
 				dank.setVisible(true);
 				dispose();
+				System.out.println(textField_2.getText());
 			}
 		});
 		btnAceptar.setBounds(494, 231, 97, 25);

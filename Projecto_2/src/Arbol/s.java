@@ -32,9 +32,10 @@ public class s extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 		DefaultMutableTreeNode hey;
+		Arbol hoe;
 			public void run() {
 				try {
-					s frame = new s(hey);
+					s frame = new s(hey, hoe);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +47,7 @@ public class s extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public s(DefaultMutableTreeNode hey){
+	public s(DefaultMutableTreeNode hey, Arbol hoe){
 		lock lock = new lock();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 602, 543);
@@ -81,7 +82,7 @@ public class s extends JFrame {
 				Nodo dankus = new NodoIndividual(dank);
 				DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(dankus);
 				DefaultMutableTreeNode dink = new DefaultMutableTreeNode("lmao");
-				model.insertNodeInto(newNode, node, node.getChildCount());
+				model.insertNodeInto(dankus, node, node.getChildCount());
 			}
 		});
 
@@ -108,6 +109,10 @@ public class s extends JFrame {
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(407, 297, 149, 22);
+		comboBox.addItem("Abuelos");
+		comboBox.addItem("Primos");
+		comboBox.addItem("Tios");
+		comboBox.addItem("Hermanos");
 		contentPane.add(comboBox);
 
 		JLabel lblMostrarPorRelacion = new JLabel("Mostrar por relaci\u00F3n...");
@@ -125,26 +130,70 @@ public class s extends JFrame {
 		JButton btnAgregarConyugue = new JButton("Agregar Conyugue");
 		btnAgregarConyugue.addActionListener(new ActionListener() {
 			public void  actionPerformed(ActionEvent arg0) {
-				emp upale = new emp();
-				upale.setVisible(true);	
-				upale.setWorking(true);
+				String nombre;
+				nombre = JOptionPane.showInputDialog("Inserte el nombre");
+				TreePath path = tree.getSelectionPath();
+				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+				tree.setSelectionRow(2);
+				NodoIndividual node =  (NodoIndividual) path.getLastPathComponent();
+				Persona persona = (Persona)node.getInfo();
+				persona.setConyugue(nombre);
+	
+				
+			
+				/*String nombre;
+				nombre = JOptionPane.showInputDialog("Inserte el nombre");
 				TreePath path = tree.getSelectionPath();
 				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
 				tree.setSelectionRow(2);
 				DefaultMutableTreeNode node =  (DefaultMutableTreeNode) path.getLastPathComponent();
-				DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(upale.getPersona());
-				DefaultMutableTreeNode dank = new DefaultMutableTreeNode("daml");
-				model.insertNodeInto(newNode, node, node.getChildCount());
+				NodoIndividual nodote = (NodoIndividual) node;
+				Nodo nodito = (Nodo) node;
+				nodito.setInfo(nodito.getInfo().toString() + nombre);
+				String informa = (String)nodito.getInfo();
+				NodoPareja pareja = new NodoPareja(informa, nodote);
+				*/
 			}
 		});
 		btnAgregarConyugue.setBounds(407, 127, 149, 25);
 		contentPane.add(btnAgregarConyugue);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Nodo node = (Nodo) tree.getLastSelectedPathComponent();
+				String selected = (String)comboBox.getSelectedItem();
+				switch (selected) {
+	            case "Primos": 
+	            	JOptionPane.showMessageDialog(null, hoe.getPrimos(node).toString());
+	            case "Tios":
+	            case "Hermanos":
+	            case "Abuelos":
+	                  
+	          
+	        }
+			}
+		});
 		btnAceptar.setBounds(407, 332, 97, 25);
 		contentPane.add(btnAceptar);
 		
 		JButton btnMostrarInformacion = new JButton("Mostrar Informacion");
+		btnMostrarInformacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				TreePath path = tree.getSelectionPath();
+				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+				tree.setSelectionRow(2);
+				NodoIndividual node =  (NodoIndividual) path.getLastPathComponent();
+				System.out.println(node.getInfo());
+				Persona persona = (Persona)node.getInfo();
+				JOptionPane.showMessageDialog(null, "Nombre: " + persona.getNombre() + 
+													//"\nFecha de nacimiento: " + persona.getFechanacimiento() + 
+													"\nEdad: " + persona.getEdad() + 
+													"\nEsta vivo: " + persona.isVivo() +
+													"\nEspos@: " + persona.getConyugue());
+			}
+		});
 		btnMostrarInformacion.setBounds(407, 165, 149, 25);
 		contentPane.add(btnMostrarInformacion);
 

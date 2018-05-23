@@ -23,8 +23,9 @@ public class NodoPareja <E extends Comparable<E>> extends Nodo{
 	}
 
 	//Constructor
-	public NodoPareja(String info) {
+	public NodoPareja(String info, NodoIndividual indi) {
 		super(info);
+		this.anterior = indi;
 		this.hijos = new ArrayList<>();
 	}
 	
