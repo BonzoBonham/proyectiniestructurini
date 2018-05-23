@@ -57,12 +57,12 @@ for(int i=0;i<ner.length ; i++) {
 }*/
 
 Arbol a=new Arbol();
-NodoPareja np1=a.Casar(n4,p5); //mis papas
-NodoPareja np2=a.Casar(n9,p8); // mis abuelos
-NodoPareja np3=a.Casar(n6,p12); // mi tio
-NodoPareja np4=a.Casar(n1,p13); //mi novia
-NodoPareja np5=a.Casar(n14,p15); //mis otros abuelos
-NodoPareja np6=a.Casar(n16,p19); //mis otros tios
+Nodo np1=a.Casar(n4,p5); //mis papas
+Nodo np2=a.Casar(n9,p8); // mis abuelos
+Nodo np3=a.Casar(n6,p12); // mi tio
+Nodo np4=a.Casar(n1,p13); //mi novia
+Nodo np5=a.Casar(n14,p15); //mis otros abuelos
+Nodo np6=a.Casar(n16,p19); //mis otros tios
 
 System.out.println(n1);
 System.out.println(((NodoIndividual)n1).getSigni());

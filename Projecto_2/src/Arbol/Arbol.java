@@ -1,5 +1,8 @@
 package Arbol;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class Arbol<E> {
 private Nodo raiz;
@@ -22,9 +25,11 @@ public Arbol() {
 	this.raiz = null;
 }
 
-public NodoPareja Casar(Nodo n1, Persona n2) {
-	NodoPareja np=new NodoPareja(((Persona)(n1.getInfo())).getNombre()+" y "+n2.getNombre());
-	((NodoIndividual) n1).setSigni(np);
+public Nodo Casar(Nodo n1, Persona n2) {
+	Nodo np=new NodoPareja(((Persona)(n1.getInfo())).getNombre()+" y "+n2.getNombre());
+	((NodoIndividual) n1).setSigni((NodoPareja)np);
+	((NodoPareja) np).setHombre((NodoIndividual) n1);
+	
 	return np;
 }
 
@@ -55,6 +60,22 @@ public Nodo buscarNodo(Nodo busc, Nodo padre) {
 	}
 }
 
+public LinkedList<Nodo> getHermanos(Nodo yo) {
+	LinkedList <Nodo> list=new LinkedList<Nodo>();
+	Nodo papas=buscarNodo(yo);
+	
+	Iterator<Nodo> r=((NodoPareja)papas).getHijos().iterator();
+	while(r.hasNext()) {
+		list.add(r.next());
+	}
+	return list;
+	}/*
+gethermanos
+get abuelos
+getprimos
+gettios
+
+*/
 /*
 public void AgregarHijoAPareja(NodoPareja nodo, Nodo n) {
 	if(nodo.getHijo()==null) {nodo.setHijo(n);n.setPapas(nodo);
