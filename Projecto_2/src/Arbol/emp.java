@@ -19,8 +19,17 @@ public class emp extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private static boolean working;
 	
 	
+
+	public static boolean isWorking() {
+		return working;
+	}
+
+	public static void setWorking(boolean working) {
+		emp.working = working;
+	}
 
 	public static Persona getPersona() {
 		return persona;
@@ -51,7 +60,7 @@ public class emp extends JFrame {
 	 */
 	public emp() {
 		lock lock2 = new lock();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 445, 412);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -89,16 +98,11 @@ public class emp extends JFrame {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Persona dank  = new Persona(textField.getText(), Integer.parseInt(textField_1.getText()), textField_2.getText());
-				setPersona(dank);
 				Nodo dankus = new NodoIndividual(dank);
-				setPersona(dank);
 				String info[]=new String[3];  //creates an array to store  variable values. You can increase the size when needed
 				info[0]=textField.getText(); //put jTextField1's value in the array.
 				info[1]=textField_1.getText(); //put jTextField1's value in the array.
 				info[2]=textField_2.getText(); //put jTextField1's value in the array.
-				synchronized (lock2) {
-					lock2.notify();	
-				}
 				setVisible(false); // hiding this form
 			}
 		});
