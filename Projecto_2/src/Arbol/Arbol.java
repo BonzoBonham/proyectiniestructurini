@@ -1,8 +1,11 @@
 package Arbol;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
+
+import javax.swing.plaf.synth.SynthSplitPaneUI;
 
 public class Arbol<E> {
 private Nodo raiz;
@@ -66,16 +69,54 @@ public LinkedList<Nodo> getHermanos(Nodo yo) {
 	
 	Iterator<Nodo> r=((NodoPareja)papas).getHijos().iterator();
 	while(r.hasNext()) {
-		list.add(r.next());
+		Nodo her=r.next();
+		if(her!=yo) {
+			list.add(her);
+		}
 	}
 	return list;
-	}/*
-gethermanos
-get abuelos
-getprimos
-gettios
+	}
 
-*/
+public void AgregarHijoAPareja(Nodo n, Nodo n2) {
+	((NodoPareja)n).AgregarHijo(n2);
+}
+
+public Nodo getAbuelosPaternos(Nodo yo) {
+return ((NodoIndividual)((NodoPareja)buscarNodo(yo)).getAnterior()).getPapas();
+}
+
+public LinkedList<Nodo> getTios(Nodo yo) {
+	LinkedList <Nodo> list=new LinkedList<Nodo>();
+	Nodo papa=((NodoPareja)buscarNodo(yo)).getAnterior();
+	return getHermanos(papa);
+	
+}
+public LinkedList<Nodo> getPrimos(Nodo yo) {
+	LinkedList <Nodo> list=new LinkedList<Nodo>();
+	LinkedList <Nodo> tios=getTios(yo);
+	Iterator t=tios.iterator();
+	while(t.hasNext()) {
+		Nodo f=(Nodo) t.next();
+		if(((NodoIndividual)f).getSigni()!=null) {
+			if(((NodoPareja)((NodoIndividual)f).getSigni()).getHijos().isEmpty()) {}
+			else {
+				Iterator p=((NodoPareja)((NodoIndividual)f).getSigni()).getHijos().iterator();
+				while(p.hasNext()) {
+					list.add((Nodo) p.next());
+					
+				}
+				
+			}
+		}
+		
+		}
+	
+		
+	
+	return list;
+	
+}
+
 /*
 public void AgregarHijoAPareja(NodoPareja nodo, Nodo n) {
 	if(nodo.getHijo()==null) {nodo.setHijo(n);n.setPapas(nodo);

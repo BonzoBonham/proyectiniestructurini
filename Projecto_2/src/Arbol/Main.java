@@ -4,8 +4,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-Persona p1=new Persona("Andres Posada",21,true);
-Persona p2=new Persona("Daniel Posada",18,true);
+Persona p1=new Persona("Andres Posada",21,true); 
+Persona p2=new Persona("Daniel Posada",18,true); 
 Persona p3=new Persona("Tomas Posada",13,true);
 Persona p4=new Persona("Jorge Luis Posada",54,true);
 Persona p5=new Persona("Ana Lucia Saldarriaga",52,true);
@@ -17,32 +17,18 @@ Persona p10=new Persona("Valentina Posada",10,true);
 Persona p11=new Persona("Santiago Posada",5,true);
 Persona p12=new Persona("Jenny Ramirez",33,true);
 Persona p13=new Persona("Daniela Pareja",19,true);
-Persona p14=new Persona("Luis Guillermo Saldarriaga",78,true);
-Persona p15=new Persona("Vivian Moreno",70,true);
-Persona p16=new Persona("Juan Guillermo Saldarriaga",55,true);
-Persona p17=new Persona("Felipe Saldarriaga",19,true);
-Persona p18=new Persona("Juan Luis Saldarriaga",19,true);
-Persona p19=new Persona("Gloria Perez",50,true);
+
 
 Nodo n1=new NodoIndividual(p1);
 Nodo n2=new NodoIndividual(p2);
 Nodo n3=new NodoIndividual(p3);
 Nodo n4=new NodoIndividual(p4);
-//Nodo n5=new NodoIndividual(p5);
 Nodo n6=new NodoIndividual(p6);
 Nodo n7=new NodoIndividual(p7);
-//Nodo n8=new NodoIndividual(p8);
 Nodo n9=new NodoIndividual(p9);
 Nodo n10=new NodoIndividual(p10);
 Nodo n11=new NodoIndividual(p11);
-//Nodo n12=new NodoIndividual(p12);
-//Nodo n13=new NodoIndividual(p13);
-Nodo n14=new NodoIndividual(p14);
-//Nodo n15=new NodoIndividual(p15);
-Nodo n16=new NodoIndividual(p16);
-Nodo n17=new NodoIndividual(p17);
-Nodo n18=new NodoIndividual(p18);
-//Nodo n19=new NodoIndividual(p19);
+
 
 
 
@@ -61,14 +47,53 @@ Nodo np1=a.Casar(n4,p5); //mis papas
 Nodo np2=a.Casar(n9,p8); // mis abuelos
 Nodo np3=a.Casar(n6,p12); // mi tio
 Nodo np4=a.Casar(n1,p13); //mi novia
-Nodo np5=a.Casar(n14,p15); //mis otros abuelos
-Nodo np6=a.Casar(n16,p19); //mis otros tios
 
+a.setRaiz(n9);
+
+//Agregar Hijos de mis abuelos
+a.AgregarHijoAPareja(np2, n4);
+a.AgregarHijoAPareja(np2, n6);
+a.AgregarHijoAPareja(np2, n7);
+//Agregar Hijos de mis Papas
+a.AgregarHijoAPareja(np1, n1);
+a.AgregarHijoAPareja(np1, n2);
+a.AgregarHijoAPareja(np1, n3);
+//Agregar Hijos de mis tios
+a.AgregarHijoAPareja(np3, n10);
+a.AgregarHijoAPareja(np3, n11);
+
+/*
+System.out.println(n4);
+System.out.println();
+System.out.println("Casar");
+System.out.println(((NodoIndividual)n4).getSigni());
+System.out.println(((NodoPareja)np2).getAnterior());
+System.out.println();
+System.out.println("Agregar Hijo a la pareja " + np2);
+System.out.println(((NodoIndividual)n4).getPapas());
+System.out.println(((NodoPareja)np2).getHijos());
+
+System.out.println(a.buscarNodo(n4));
+*/
 System.out.println(n1);
+System.out.println();
+System.out.println("Casar");
 System.out.println(((NodoIndividual)n1).getSigni());
-System.out.println(np4);
+System.out.println(((NodoIndividual)n1).getSigni().getAnterior());
+System.out.println();
+System.out.println("Agregar Hijo a la pareja :" + ((NodoIndividual)n1).getPapas());
+System.out.println(((NodoIndividual)n1).getPapas());
+System.out.println(((NodoIndividual)n1).getPapas().getHijos());
 
-a.setRaiz(n1); //yo
+System.out.println();
+System.out.println("Los abuelos paternos son "+ a.getAbuelosPaternos(n1));
+System.out.println();
+System.out.println("Los hermanos son "+ a.getHermanos(n1));
+System.out.println();
+System.out.println("Los tios son "+ a.getTios(n1));
+System.out.println();
+System.out.println("Los primos son "+ a.getPrimos(n1));
+
 /*
 a.AgregarHermano(n1, n2); // mi hermano
 a.AgregarHermano(n1, n3); //mi hermano
